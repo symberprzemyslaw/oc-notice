@@ -25,13 +25,19 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   margin: 20px;
   padding: 20px;
   background-color: white;
   border: #fcd424 4px solid;
 
+}
+.names {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: start;
 }
 legend {
   font-size: 20px;
