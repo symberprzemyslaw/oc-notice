@@ -51,14 +51,14 @@ function generatePDF(event) {
       
 
       content: [
-        [
-          { text: 'Nazwa zakładu ubezpieczeń'},
-          // Fix it { image: '', width: 100, height: 100, alignment: 'right' },
-          { text: 'ul. Wroc 1, 00-000 Warszawa 1-09-2024' },
-        ],
+        { columns: [
+          { width: '*', text: 'Logo', alignment: 'left',  margin: [0, 0, 0, 20] },
+          { width: '*', text: 'Logo', alignment: 'center', margin: [0, 0, 0, 20] },
+          { width: '*', text: 'Logo', alignment: 'right', margin: [0, 0, 0, 20] },
+        ]},
         {
-              text: 'Wypowiedzenie umowy ubezpieczenia OC posiadaczy pojazdów mechanicznych',
-              fontSize: 16,
+              text: 'WYPOWIEDZENIE UMOWY UBEZPIECZENIA OC POJAZDÓW MECHANICZNYCH',
+              fontSize: 12,
               bold: true,
               alignment: 'center',
               margin: [0, 0, 0, 20],
@@ -69,15 +69,20 @@ function generatePDF(event) {
         { text: 'numer polisy adres email', margin: [0, 0, 0, 10] },
         {
           text: 'ZAZNACZ I UZUPEŁNIJ TYLKO JEDNO Z OŚWIADCZEŃ',
-          fontSize: 16,
+          fontSize: 12,
           bold: true,
           alignment: 'center',
           margin: [0, 0, 0, 20],
         },
-        { text: [ 'Oświadczam że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zwarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: art 26 ustawy *)', {text: 1 ? ' ☑' : ' ☐' , font: 'OpenSansEmoji'} ], margin: [0, 0, 0, 10] },
-        { text: [ 'Oświadczam że wypowiadam umowę z dniem , umowę ubezpieczenia w firmie ........ poniważ zawarłem na okres od dnia .... do dnia .... ubezpieczenie na mój pojazd w fimire ....', {text: 1 ? ' ☑' : ' ☐' , font: 'OpenSansEmoji'} ], margin: [0, 0, 0, 10] },
-        { text: [ 'Oświadczam że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zwarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: art 26 ustawy *)', {text: 1 ? ' ☑' : ' ☐' , font: 'OpenSansEmoji'} ], margin: [0, 0, 0, 10] },
-        { text: `* Ustawa z dnia 22 maja 2003 r. o ubezpieczeniach obowiązkowych, Ubezpieczeniowym Funduszu Gwarancyjnym i Polski Biurtze Ubezpieczycieli komunikacyjnych`, margin: [0, 0, 0, 10] },
+        { text: [  {text: 1 ? ' ☑' : ' ☐' , font: 'OpenSansEmoji', margin: [0,0,0,10]} ,'Oświadczam że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zwarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: art 26 ustawy *)' ], margin: [0, 0, 0, 10] },
+        { text: [  {text: 1 ? ' ☑' : ' ☐' , font: 'OpenSansEmoji'} , 'Oświadczam że wypowiadam umowę z dniem , umowę ubezpieczenia w firmie ........ ponieważ zawarłem na okres od dnia .... do dnia .... ubezpieczenie na mój pojazd w frmie ....'], margin: [0, 0, 0, 10] },
+        { text: [  {text: 1 ? ' ☑' : ' ☐' , font: 'OpenSansEmoji'} , 'Oświadczam że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zwarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: art 26 ustawy *)' ], margin: [0, 0, 0, 10] },
+        { text: `* Ustawa z dnia 22 maja 2003 r. o ubezpieczeniach obowiązkowych, Ubezpieczeniowym Funduszu Gwarancyjnym i Polski Biurze Ubezpieczycieli Komunikacyjnych`, margin: [0, 0, 0, 10] },
+        { text: `_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _`, margin: [0, 0, 0, 10] },
+        { text: `Potwierdzenie przyjęcia oświadczenia przez Agenta:`, margin: [0, 0, 0, 10] },
+        { text: `Data przyjęcia dokumentu:`, margin: [0, 0, 0, 10] },
+        { text: `Podpis, pieczęć Agenta:`, margin: [0, 0, 0, 10] },
+        { text: `Informujemy, że twoja umowa zostanie zakończona z dniem podanym w treści oświadczenia a jeśli ta data nie zostanie wpisana, z datą przyjęcia dokumentu`, margin: [0, 0, 0, 20] },
 
     ]};
     pdfMake.createPdf(docDefinition).download(`Formularz APK-${nameData[1].value} ${nameData[0].value}.pdf`);
