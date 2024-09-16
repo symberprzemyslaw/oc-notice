@@ -26,10 +26,15 @@ export function App() {
     { name: "Nazwisko", value: '' },
     { name: "Pesel", value: '' },
     { name: "Regon", value: '' },
-    { name: "Regon", value: '' },
+    { name: "Telefon", value: '' },
     { name: "Email", value: '' },
+    { name: "Adres", value: '' },
+    { name: "Numer rejestracyjny", value: '' },
+    { name: "Nazwa zakładu ubezpieczeń", value: '' },
+    { name: "Miejscowość", value: '' },
+    { name: "Marka pojazdu", value: '' },
+    { name: "Numer polisy", value: '' },
     { name: "Data", value: '' },
-    { name: "Agencja", value: '' },
 
 
   ]);
@@ -52,7 +57,7 @@ function generatePDF(event) {
 
       content: [
         { columns: [
-          { width: '*', text: 'Logo', alignment: 'left',  margin: [0, 0, 0, 20] },
+          { width: '*', text: `${}`, alignment: 'left',  margin: [0, 0, 0, 20] },
           { width: '*', text: 'Logo', alignment: 'center', margin: [0, 0, 0, 20] },
           { width: '*', text: 'Logo', alignment: 'right', margin: [0, 0, 0, 20] },
         ]},
@@ -63,7 +68,7 @@ function generatePDF(event) {
               alignment: 'center',
               margin: [0, 0, 0, 20],
         },
-        { text: 'Imię i nazwisko klienta / Pesel lub Regon/ telefon', margin: [0, 0, 0, 10] },
+        { text: `Imię i nazwisko klienta ${nameData[0].value} ${nameData[1].value} / Pesel lub Regon/ telefon`, margin: [0, 0, 0, 10] },
         { text: 'adres', margin: [0, 0, 0, 10] },
         { text: 'numer rejestracyjny i marka pojazdu', margin: [0, 0, 0, 10] },
         { text: 'numer polisy adres email', margin: [0, 0, 0, 10] },
@@ -74,15 +79,18 @@ function generatePDF(event) {
           alignment: 'center',
           margin: [0, 0, 0, 20],
         },
-        { text: [  {text: 1 ? ' ☑' : ' ☐' , font: 'OpenSansEmoji', margin: [0,0,0,10]} ,'Oświadczam że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zwarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: art 26 ustawy *)' ], margin: [0, 0, 0, 10] },
-        { text: [  {text: 1 ? ' ☑' : ' ☐' , font: 'OpenSansEmoji'} , 'Oświadczam że wypowiadam umowę z dniem , umowę ubezpieczenia w firmie ........ ponieważ zawarłem na okres od dnia .... do dnia .... ubezpieczenie na mój pojazd w frmie ....'], margin: [0, 0, 0, 10] },
-        { text: [  {text: 1 ? ' ☑' : ' ☐' , font: 'OpenSansEmoji'} , 'Oświadczam że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zwarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: art 26 ustawy *)' ], margin: [0, 0, 0, 10] },
-        { text: `* Ustawa z dnia 22 maja 2003 r. o ubezpieczeniach obowiązkowych, Ubezpieczeniowym Funduszu Gwarancyjnym i Polski Biurze Ubezpieczycieli Komunikacyjnych`, margin: [0, 0, 0, 10] },
+        { text: [  {text: 1 ? ' ☑ ' : ' ☐ ' , font: 'OpenSansEmoji', margin: [0,0,0,10]} ,'Oświadczam że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zwarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: art 26 ustawy *)' ], margin: [0, 0, 0, 10] },
+        { text: [  {text: 1 ? ' ☑ ' : ' ☐ ' , font: 'OpenSansEmoji'} , 'Oświadczam że wypowiadam umowę z dniem , umowę ubezpieczenia w firmie ........ ponieważ zawarłem na okres od dnia .... do dnia .... ubezpieczenie na mój pojazd w frmie ....'], margin: [0, 0, 0, 10] },
+        { text: [  {text: 1 ? ' ☑ ' : ' ☐ ' , font: 'OpenSansEmoji'} , 'Oświadczam że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zwarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: art 26 ustawy *)' ], margin: [0, 0, 0, 10] },
+        { text: `Podpis klienta`, alignment: 'right', italics: true , margin: [50, 0, 0, 50] },
+        { text: `* Ustawa z dnia 22 maja 2003 r. o ubezpieczeniach obowiązkowych, Ubezpieczeniowym Funduszu Gwarancyjnym i Polski Biurze Ubezpieczycieli Komunikacyjnych`,fontSize: 10, margin: [0, 0, 0, 10] },
         { text: `_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _`, margin: [0, 0, 0, 10] },
         { text: `Potwierdzenie przyjęcia oświadczenia przez Agenta:`, margin: [0, 0, 0, 10] },
-        { text: `Data przyjęcia dokumentu:`, margin: [0, 0, 0, 10] },
-        { text: `Podpis, pieczęć Agenta:`, margin: [0, 0, 0, 10] },
-        { text: `Informujemy, że twoja umowa zostanie zakończona z dniem podanym w treści oświadczenia a jeśli ta data nie zostanie wpisana, z datą przyjęcia dokumentu`, margin: [0, 0, 0, 20] },
+        { columns: [
+          { width: '*', text: 'Data:', alignment: 'left',  margin: [0, 0, 0, 40] },
+          { width: '*', text: 'Podpis, pieczęć Agenta:', alignment: 'right', margin: [0, 0, 0, 40] },
+        ]},
+        { text: `Informujemy, że twoja umowa zostanie zakończona z dniem podanym w treści oświadczenia a jeśli ta data nie zostanie wpisana, z datą przyjęcia dokumentu`, fontSize: 10, margin: [0, 0, 0, 20] },
 
     ]};
     pdfMake.createPdf(docDefinition).download(`Formularz APK-${nameData[1].value} ${nameData[0].value}.pdf`);
