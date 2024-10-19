@@ -24,11 +24,11 @@ const CarData = ({ handleNameChange }) => {
           onChange={handleNameChange}
         />
 
-        <label htmlFor="Data">Data wypowiedzenia:</label>
-        <input type="date" name="Data" onChange={handleNameChange} />
+        <label htmlFor="date">Data sporządzenia dokumentu:</label>
+        <input type="date" name="date" onChange={handleNameChange} />
 
-        <label htmlFor="city">Miejscowość:</label>
-        <input type="text" name="city" onChange={handleNameChange} />
+        <label htmlFor="town">Miejscowość sporządzenia dokumentu:</label>
+        <input type="text" name="town" onChange={handleNameChange} />
       </section>
     )
 };

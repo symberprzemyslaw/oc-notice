@@ -12,24 +12,42 @@ const ContactData = ({ handleNameChange }) => {
         name="email"
         onChange={handleNameChange}
         placeholder="example@example.com"
+        
       />
 
-      <label htmlFor="telefon">Telefon:</label>
+      <label htmlFor="phone">Telefon:</label>
       <input
         type="text"
-        id="telefon"
-        name="telefon"
+        id="phone"
+        name="phone"
         onChange={handleNameChange}
         placeholder="+48 123 456 789"
+        
       />
 
-      <label htmlFor="adres">Adres:</label>
+      <label htmlFor="adress">Miejscowość:</label>
       <input
         type="text"
-        id="adres"
-        name="adres"
+        id="adressCity"
+        name="adressCity"
         onChange={handleNameChange}
-        placeholder="Twoja ulica 123"
+        placeholder="Twoja miejscowość"
+      />
+      <label htmlFor="adress">Kod pocztowy:</label>
+      <input
+        type="text"
+        id="adressZip"
+        name="adressZip"
+        onChange={handleNameChange}
+        placeholder="12-345"
+      />
+      <label htmlFor="adress">Ulica i numer domu:</label>
+      <input
+        type="text"
+        id="adressStreet"
+        name="adressStreet"
+        onChange={handleNameChange}
+        placeholder="Twoja ulica 123/4"
       />
     </section>
   );

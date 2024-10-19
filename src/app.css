@@ -54,7 +54,7 @@ input {
   border: 2px solid #fcd424;
 }
 input:invalid {
-  border: 2px solid red;
+  border: 2px solid rgb(255, 154, 154);
 }
 
 .enrolled {
@@ -195,7 +195,7 @@ div.meter {
 }
 
 img {
-  width: 50%;
+  width: 30%;
   height: auto;
 }
 
