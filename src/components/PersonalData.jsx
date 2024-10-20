@@ -1,10 +1,19 @@
-import React from 'react';
+import React from "react";
 
-const PersonalData = ({ handleNameChange, nameData}) => {
+const PersonalData = ({ handleNameChange, nameData }) => {
   return (
     <section>
       <h2>Dane osobowe</h2>
-
+      <p>
+      Jeśli Ubezpieczającym na polisie była firma (inna niż jednoosobowa działalność gospodarcza), uzupełnij pola: nazwa firmy, NIP lub REGON.
+      </p>
+      <p>
+      Jeśli ubezpieczałeś pojazd jako jednoosobowa działalność gospodarcza, wypełnij pola: imię, nazwisko, NIP lub REGON, PESEL.
+      </p>
+      <p>
+      Jeśli ubezpieczałeś pojazd jako osoba fizyczna, uzupełnij tylko pola:
+      imię, nazwisko, PESEL.
+      </p>
       <label htmlFor="name">Imię:</label>
       <input
         type="text"
@@ -13,8 +22,6 @@ const PersonalData = ({ handleNameChange, nameData}) => {
         onChange={handleNameChange}
         placeholder="Jan"
         value={nameData.name}
-        
-
       />
 
       <label htmlFor="surname">Nazwisko:</label>

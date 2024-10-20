@@ -17,9 +17,12 @@ const Notice = ({
             onInput={(e) => setNoticeChoice(Number(e.target.value))}
           />
           <label htmlFor="perm-one">
-            Oświadczam że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu
-            na jaki została zwarta (żeby moja polisa nie przedłużyła się na
-            kolejny okres ubezpieczenia - podstawa prawna: art 26 ustawy *)
+            Oświadczam, że wypowiadam umowę ubezpieczenia z ostatnim dniem
+            okresu, na jaki została zwarta{" "}
+            <em>
+              (żeby moja polisa nie przedłużyła się na kolejny okres
+              ubezpieczenia - podstawa prawna: art 26 ustawy *).
+            </em>
           </label>
         </div>
         <hr />
@@ -55,20 +58,22 @@ const Notice = ({
             </span>{" "}
             ponieważ zawarłem na okres od dnia{" "}
             <span>
-              <input type="date"
-                              id="companyPeriodStart"
-                              name="companyPeriodStart"
-                              value={noticeData.companyPeriodStart}
-                              onInput={handleNoticeDataChange}
+              <input
+                type="date"
+                id="companyPeriodStart"
+                name="companyPeriodStart"
+                value={noticeData.companyPeriodStart}
+                onInput={handleNoticeDataChange}
               />
             </span>{" "}
             do dnia{" "}
             <span>
-              <input type="date"
-                                            id="companyPeriodEnd"
-                                            name="companyPeriodEnd"
-                                            value={noticeData.companyPeriodEnd}
-                                            onInput={handleNoticeDataChange}
+              <input
+                type="date"
+                id="companyPeriodEnd"
+                name="companyPeriodEnd"
+                value={noticeData.companyPeriodEnd}
+                onInput={handleNoticeDataChange}
               />
             </span>{" "}
             ubezpieczenie na mój pojazd w firmie
@@ -82,7 +87,8 @@ const Notice = ({
                 placeholder="AXA"
               />
             </span>
-            W przypadku kiedy, gdy przysluguje mi zwrot składki, proszę o przekazanie jej na następujący nr rachunku bankowego:
+            W przypadku kiedy, gdy przysluguje mi zwrot składki, proszę o
+            przekazanie jej na następujący nr rachunku bankowego:
             <span>
               <input
                 type="text"
@@ -105,7 +111,7 @@ const Notice = ({
             onInput={(e) => setNoticeChoice(Number(e.target.value))}
           />
           <label htmlFor="perm-three">
-            Oświadczam że wypowiadam umowę ubezpieczenia z dniem{" "}
+            Oświadczam, że wypowiadam umowę ubezpieczenia z dniem{" "}
             <span>
               {" "}
               <input
@@ -117,8 +123,10 @@ const Notice = ({
                 placeholder="AXA"
               ></input>{" "}
             </span>{" "}
-            (jeśli kupiłem samochód z ubezpieczeniem - Podstawa prawna: art. 31
-            ustawy *, umowę wypowiedzieć może jedynie nabywca pojazdu)
+            <em>
+              (jeśli kupiłem samochód z ubezpieczeniem - Podstawa prawna: art. 31
+              ustawy *, umowę wypowiedzieć może jedynie nabywca pojazdu)
+            </em>
           </label>
         </div>
       </fieldset>

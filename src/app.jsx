@@ -62,7 +62,6 @@ export function App() {
     bankAccount: "",
 
     datePermThree: "",
-
   });
   const [state, setState] = useState(0);
 
@@ -104,11 +103,11 @@ export function App() {
             },
             {
               width: "*",
-              text: `${nameData.town} ${nameData.date ? ", dnia " + nameData.date
-                .split("-")
-                .reverse()
-                .join("/") : ""
-}`,
+              text: `${nameData.town} ${
+                nameData.date
+                  ? ", dnia " + nameData.date.split("-").reverse().join("/")
+                  : ""
+              }`,
               alignment: "right",
               margin: [0, 0, 0, 20],
               fontSize: 10,
@@ -118,17 +117,23 @@ export function App() {
         {
           columns: [
             {
-              text: `${".".repeat(40)} \n nazwa zakładu ubezpieczeń`,
+              text: [
+                { text: ".".repeat(40), fontSize: 12 },
+                `\n nazwa zakładu ubezpieczeń`,
+              ],
               width: "*",
               fontSize: 8,
               alignment: "left",
             },
             {
-              text: [{text: ".".repeat(40), fontSize : 12},`\n miejsce i data`],
+              text: [
+                { text: ".".repeat(40), fontSize: 12 },
+                `\n miejsce i data`,
+              ],
               width: "*",
               fontSize: 8,
               alignment: "right",
-              margin: (nameData.town.length > 25 ?  [0,10,0,0] : [0,0,0,0])
+              margin: nameData.town.length > 25 ? [0, 10, 0, 0] : [0, 0, 0, 0],
             },
           ],
           margin: [0, -40, 0, 20],
@@ -138,16 +143,23 @@ export function App() {
           fontSize: 14,
           bold: true,
           alignment: "center",
-          margin: [0, 20, 0, 20],
+          margin: [0, 10, 0, 10],
         },
         // DANE KLIENTA
         {
-          text: `${nameData.name + " " + nameData.surname} ${nameData.companyName} ${nameData.pesel} ${nameData.regon ? "NIP:" + nameData.regon : ""} ${nameData.nip ? "REGON:" + nameData.nip : ""} ${nameData.phone}`,
+          text: `${nameData.name + " " + nameData.surname} ${
+            nameData.companyName
+          } ${nameData.pesel} ${
+            nameData.regon ? "NIP:" + nameData.regon : ""
+          } ${nameData.nip ? "REGON:" + nameData.nip : ""} ${nameData.phone}`,
           noWrap: true,
           margin: [0, 0, 0, -2],
         },
         {
-          text: `${dotted} \n imię i nazwisko / nazwa firmy / PESEL / NIP / REGON / numer telefonu`,
+          text: [
+            { text: dotted, fontSize: 12 },
+            `\n imię i nazwisko / nazwa firmy / PESEL / NIP / REGON / numer telefonu`,
+          ],
           fontSize: 8,
           margin: [0, 0, 0, 5],
         },
@@ -155,13 +167,20 @@ export function App() {
           text: `${nameData.adressCity} ${nameData.adressZip} ${nameData.adressStreet}`,
           margin: [0, 0, 0, -2],
         },
-        { text: `${dotted} \n adres`, fontSize: 8, margin: [0, 0, 0, 5] },
+        {
+          text: [{ text: dotted, fontSize: 12 }, `\n adres`],
+          fontSize: 8,
+          margin: [0, 0, 0, 5],
+        },
         {
           text: `${nameData.registrationNumber} ${nameData.brand}`,
           margin: [0, 0, 0, -2],
         },
         {
-          text: `${dotted} \n numer rejestracyjny i marka pojazdu`,
+          text: [
+            { text: dotted, fontSize: 12 },
+            `\n numer rejestracyjny i marka pojazdu`,
+          ],
           fontSize: 8,
           margin: [0, 0, 0, 5],
         },
@@ -170,7 +189,10 @@ export function App() {
           margin: [0, 0, 0, -2],
         },
         {
-          text: `${dotted} \n numer polisy / adres email`,
+          text: [
+            { text: dotted, fontSize: 12 },
+            `\n numer polisy / adres email`,
+          ],
           fontSize: 8,
           margin: [0, 0, 0, 5],
         },
@@ -188,24 +210,49 @@ export function App() {
               font: "OpenSansEmoji",
               margin: [0, 0, 0, 10],
             },
-            { text: "Oświadczam że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zawarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: "},
-            { text: `art. 28 ustawy *`, italics: true},
-            { text: `)`}
+            {
+              text: "Oświadczam, że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zawarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: ",
+            },
+            { text: `art. 28 ustawy *`, italics: true },
+            { text: `).` },
           ],
           margin: [0, 0, 0, 10],
         },
         {
           text: [
             { text: noticeChoice === 1 ? " ☑ " : " ☐ ", font: "OpenSansEmoji" },
-            `Oświadczam,że z dniem ${noticeData.noticeDate.split("-").reverse().join("/") || ".".repeat(20)} wypowiadam umowę ubezpieczenia w firmie ${noticeData.companyFrom || ".".repeat(20)} ponieważ zawarłem na okres od dnia ${noticeData.companyPeriodStart.split("-").reverse().join("/") || ".".repeat(20)} do dnia ${noticeData.companyPeriodEnd.split("-").reverse().join("/") || ".".repeat(20)} ubezpieczenie na mój pojazd w firmie ${noticeData.companyTo || ".".repeat(20)}. W przypadku, gdy przysługuje mi zwrot składki, proszę o przekzanie jej na następujacy rachunek bankowy: ${noticeData.bankAccount || ".".repeat(20)}`,
+            `Oświadczam,że z dniem ${
+              noticeData.noticeDate.split("-").reverse().join("/") ||
+              ".".repeat(20)
+            } wypowiadam umowę ubezpieczenia w firmie ${
+              noticeData.companyFrom || ".".repeat(20)
+            } ponieważ zawarłem na okres od dnia ${
+              noticeData.companyPeriodStart.split("-").reverse().join("/") ||
+              ".".repeat(20)
+            } do dnia ${
+              noticeData.companyPeriodEnd.split("-").reverse().join("/") ||
+              ".".repeat(20)
+            } ubezpieczenie na mój pojazd w firmie ${
+              noticeData.companyTo || ".".repeat(20)
+            }. W przypadku, gdy przysługuje mi zwrot składki, proszę o przekzanie jej na następujacy rachunek bankowy: ${
+              noticeData.bankAccount || ".".repeat(20)
+            }`,
           ],
           margin: [0, 0, 0, 10],
         },
         {
           text: [
             { text: noticeChoice === 2 ? " ☑ " : " ☐ ", font: "OpenSansEmoji" },
-            { text: `Oświadczam że wypowiadam umowę ubezpieczenia z dniem ${noticeData.datePermThree.split("-").reverse().join("/") || ".".repeat(20)} jeśli kupiłem samochód z ubezpieczeniem - podstawa prawna:`},
-            {text: ` art. 31 ustawy *, umowę wypowiedzieć może jedynie nabywca pojazdu`, italics: true},
+            {
+              text: `Oświadczam, że wypowiadam umowę ubezpieczenia z dniem ${
+                noticeData.datePermThree.split("-").reverse().join("/") ||
+                ".".repeat(20)
+              } ,jeśli kupiłem samochód z ubezpieczeniem - podstawa prawna:`,
+            },
+            {
+              text: ` art. 31 ustawy *, umowę wypowiedzieć może jedynie nabywca pojazdu`,
+              italics: true,
+            },
           ],
           margin: [0, 0, 0, 10],
         },
@@ -214,13 +261,15 @@ export function App() {
             text: ".".repeat(40),
             alignment: "right",
             margin: [0, 30, 0, 0],
-          }, ,
-        {
-          text: `podpis klienta`,
-          alignment: "right",
-          margin: [50, 0, 0, 50],
-          fontSize: 10,
-        }],
+          },
+          ,
+          {
+            text: `podpis klienta`,
+            alignment: "right",
+            margin: [50, 0, 0, 50],
+            fontSize: 10,
+          },
+        ],
         {
           text: `* Ustawa z dnia 22 maja 2003 r. o ubezpieczeniach obowiązkowych, Ubezpieczeniowym Funduszu Gwarancyjnym i Polski Biurze Ubezpieczycieli Komunikacyjnych`,
           fontSize: 10,
@@ -271,14 +320,14 @@ export function App() {
           margin: [0, 0, 0, 20],
         },
       ],
-      watermark: { 
-        text: 'studiopolis', // Tekst watermarku
-        color: 'blue',     // Kolor tekstu
-        opacity: 0.1,      // Przezroczystość (0 do 1)
-        bold: true,        // Czy tekst ma być pogrubiony
-        italics: false,    // Czy tekst ma być kursywą
-        angle: 45          // Kąt nachylenia tekstu
-      }
+      watermark: {
+        text: "studiopolis", // Tekst watermarku
+        color: "#34475d", // Kolor tekstu
+        opacity: 0.1, // Przezroczystość (0 do 1)
+        bold: true, // Czy tekst ma być pogrubiony
+        italics: false, // Czy tekst ma być kursywą
+        angle: 45, // Kąt nachylenia tekstu
+      },
     };
     pdfMake
       .createPdf(docDefinition)
@@ -292,7 +341,9 @@ export function App() {
         <p>Proszę czekać...</p>
       </div>
       <h1>Wypowiedzenie OC</h1>
-      <p>Jeśli chcesz wygenerować sam wzór wypowiedzenia OC, pozostaw pola puste</p>
+      <p>
+        Jeśli chcesz wygenerować sam wzór wypowiedzenia OC, pozostaw pola puste
+      </p>
       <form id="pdf-form" onSubmit={generatePDF}>
         <div className="meter">
           <img src={meters[state]} alt="" />
