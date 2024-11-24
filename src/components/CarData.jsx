@@ -5,7 +5,7 @@ const CarData = ({ handleNameChange, nameData }) => {
         <section>
         <h2>Dane pojazdu</h2>
         <label htmlFor="company">Nazwa zakładu ubezpieczeń:</label>
-        <input type="text" name="companyName" onChange={handleNameChange} value={nameData.companyName} />
+        <input type="text" name="company" onChange={handleNameChange} value={nameData.company} />
 
         <label htmlFor="brand">Marka pojazdu:</label>
         <input type="text" name="brand" onChange={handleNameChange}         value={nameData.brand}/>
@@ -29,6 +29,7 @@ const CarData = ({ handleNameChange, nameData }) => {
         <label htmlFor="date">Data sporządzenia dokumentu:</label>
         <input type="date" name="date" onChange={handleNameChange}
         value={nameData.date}
+        placeholder="dd-mm-rrrr"
         />
 
         <label htmlFor="town">Miejscowość sporządzenia dokumentu:</label>

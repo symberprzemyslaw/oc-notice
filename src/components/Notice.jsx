@@ -17,11 +17,12 @@ const Notice = ({
             onInput={(e) => setNoticeChoice(Number(e.target.value))}
           />
           <label htmlFor="perm-one">
-            Oświadczam, że wypowiadam umowę ubezpieczenia z ostatnim dniem
-            okresu, na jaki została zwarta{" "}
+            Oświadczam, że wypowiadam umowę ubezpieczenia z&nbsp;ostatnim dniem
+            okresu, na jaki została zwarta.{" "}
+            <br />
             <em>
-              (żeby moja polisa nie przedłużyła się na kolejny okres
-              ubezpieczenia - podstawa prawna: art 26 ustawy *).
+              (Żeby moja polisa nie przedłużyła się na kolejny okres
+              ubezpieczenia - podstawa prawna: art. 28 ustawy *).
             </em>
           </label>
         </div>
@@ -45,7 +46,7 @@ const Notice = ({
                 onInput={handleNoticeDataChange}
               ></input>{" "}
             </span>
-            wypowiadam umowę ubezpieczenia w firmie,{" "}
+            r. wypowiadam umowę ubezpieczenia w firmie,{" "}
             <span>
               <input
                 type="text"
@@ -56,7 +57,7 @@ const Notice = ({
                 placeholder="AXA"
               />
             </span>{" "}
-            ponieważ zawarłem na okres od dnia{" "}
+            ,ponieważ zawarłem na okres od dnia{" "}
             <span>
               <input
                 type="date"
@@ -66,7 +67,7 @@ const Notice = ({
                 onInput={handleNoticeDataChange}
               />
             </span>{" "}
-            do dnia{" "}
+            r. do dnia{" "}
             <span>
               <input
                 type="date"
@@ -76,7 +77,7 @@ const Notice = ({
                 onInput={handleNoticeDataChange}
               />
             </span>{" "}
-            ubezpieczenie na mój pojazd w firmie
+            r. ubezpieczenie na mój pojazd w firmie
             <span>
               <input
                 type="text"
@@ -86,8 +87,8 @@ const Notice = ({
                 onInput={handleNoticeDataChange}
                 placeholder="AXA"
               />
-            </span>
-            W przypadku kiedy, gdy przysluguje mi zwrot składki, proszę o
+            </span>.
+            W przypadku gdy przysługuje mi zwrot składki, proszę o
             przekazanie jej na następujący nr rachunku bankowego:
             <span>
               <input
@@ -99,6 +100,9 @@ const Notice = ({
                 placeholder="00 0000 0000 0000 0000 0000 0000"
               />
             </span>
+            .
+            <br />
+            <em>(Jeśli mam podwójne ubezpieczenie OC - podstawa prawna: art. 28a ustawy *. Dotyczy tylko umowy wznowionej z ustawy)</em>
           </label>
         </div>
         <hr />
@@ -111,7 +115,7 @@ const Notice = ({
             onInput={(e) => setNoticeChoice(Number(e.target.value))}
           />
           <label htmlFor="perm-three">
-            Oświadczam, że wypowiadam umowę ubezpieczenia z dniem{" "}
+            Oświadczam, że wypowiadam umowę ubezpieczenia z&nbsp;dniem{" "}
             <span>
               {" "}
               <input
@@ -123,8 +127,10 @@ const Notice = ({
                 placeholder="AXA"
               ></input>{" "}
             </span>{" "}
+            r.{" "}
+            <br />
             <em>
-              (jeśli kupiłem samochód z ubezpieczeniem - Podstawa prawna: art. 31
+              (Jeśli kupiłem samochód z ubezpieczeniem - podstawa prawna: art. 31
               ustawy *, umowę wypowiedzieć może jedynie nabywca pojazdu)
             </em>
           </label>
@@ -132,8 +138,8 @@ const Notice = ({
       </fieldset>
       <p className="ustawa">
         * Ustawa z dnia 22 maja 2003 r. o ubezpieczeniach obowiązkowych,
-        Ubezpieczeniowym Funduszu Gwarancyjnym i Polski Biurze Ubezpieczycieli
-        komunikacyjnych{" "}
+        Ubezpieczeniowym Funduszu Gwarancyjnym i Polskim Biurze Ubezpieczycieli
+        Komunikacyjnych{" "}
       </p>
     </>
   );

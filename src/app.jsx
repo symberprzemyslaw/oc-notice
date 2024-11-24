@@ -105,9 +105,9 @@ export function App() {
               width: "*",
               text: `${nameData.town} ${
                 nameData.date
-                  ? ", dnia " + nameData.date.split("-").reverse().join("/")
+                  ? ", dnia " + nameData.date.split("-").reverse().join(".")
                   : ""
-              }`,
+              } r.`,
               alignment: "right",
               margin: [0, 0, 0, 20],
               fontSize: 10,
@@ -164,7 +164,7 @@ export function App() {
           margin: [0, 0, 0, 5],
         },
         {
-          text: `${nameData.adressCity} ${nameData.adressZip} ${nameData.adressStreet}`,
+          text: `${nameData.adressStreet} ${nameData.adressZip} ${nameData.adressCity}`,
           margin: [0, 0, 0, -2],
         },
         {
@@ -211,10 +211,9 @@ export function App() {
               margin: [0, 0, 0, 10],
             },
             {
-              text: "Oświadczam, że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu na jaki została zawarta (żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: ",
+              text: "Oświadczam, że wypowiadam umowę ubezpieczenia z ostatnim dniem okresu, na jaki została zawarta.",
             },
-            { text: `art. 28 ustawy *`, italics: true },
-            { text: `).` },
+            { text: ` (Żeby moja polisa nie przedłużyła się na kolejny okres ubezpieczenia - podstawa prawna: art. 28 ustawy * )`, italics: true },
           ],
           margin: [0, 0, 0, 10],
         },
@@ -222,21 +221,22 @@ export function App() {
           text: [
             { text: noticeChoice === 1 ? " ☑ " : " ☐ ", font: "OpenSansEmoji" },
             `Oświadczam,że z dniem ${
-              noticeData.noticeDate.split("-").reverse().join("/") ||
+              noticeData.noticeDate.split("-").reverse().join(".") + "r." ||
               ".".repeat(20)
             } wypowiadam umowę ubezpieczenia w firmie ${
               noticeData.companyFrom || ".".repeat(20)
-            } ponieważ zawarłem na okres od dnia ${
-              noticeData.companyPeriodStart.split("-").reverse().join("/") ||
+            }, ponieważ zawarłem na okres od dnia ${
+              noticeData.companyPeriodStart.split("-").reverse().join(".") + "r."  ||
               ".".repeat(20)
             } do dnia ${
-              noticeData.companyPeriodEnd.split("-").reverse().join("/") ||
+              noticeData.companyPeriodEnd.split("-").reverse().join(".") + "r."  ||
               ".".repeat(20)
             } ubezpieczenie na mój pojazd w firmie ${
               noticeData.companyTo || ".".repeat(20)
             }. W przypadku, gdy przysługuje mi zwrot składki, proszę o przekzanie jej na następujacy rachunek bankowy: ${
-              noticeData.bankAccount || ".".repeat(20)
+              noticeData.bankAccount + "."|| ".".repeat(20)
             }`,
+            { text: ` (Jeśli mam podwójne ubezpieczenie OC - podstawa prawna: art. 28a ustawy *. Dotyczy tylko umowy wznowionej \n z ustawy.`, italics: true },
           ],
           margin: [0, 0, 0, 10],
         },
@@ -245,12 +245,12 @@ export function App() {
             { text: noticeChoice === 2 ? " ☑ " : " ☐ ", font: "OpenSansEmoji" },
             {
               text: `Oświadczam, że wypowiadam umowę ubezpieczenia z dniem ${
-                noticeData.datePermThree.split("-").reverse().join("/") ||
+                noticeData.datePermThree.split("-").reverse().join(".") + "r." ||
                 ".".repeat(20)
-              } ,jeśli kupiłem samochód z ubezpieczeniem - podstawa prawna:`,
+              } `,
             },
             {
-              text: ` art. 31 ustawy *, umowę wypowiedzieć może jedynie nabywca pojazdu`,
+              text: `(Jeśli kupiłem samochód z ubezpieczeniem - podstawa prawna: art. 31 ustawy *. Umowę wypowiedzieć może jedynie nabywca pojazdu)`,
               italics: true,
             },
           ],
@@ -264,14 +264,14 @@ export function App() {
           },
           ,
           {
-            text: `podpis klienta`,
+            text: `podpis Klienta`,
             alignment: "right",
-            margin: [50, 0, 0, 50],
+            margin: [35, 0, 0, 35],
             fontSize: 10,
           },
         ],
         {
-          text: `* Ustawa z dnia 22 maja 2003 r. o ubezpieczeniach obowiązkowych, Ubezpieczeniowym Funduszu Gwarancyjnym i Polski Biurze Ubezpieczycieli Komunikacyjnych`,
+          text: `* Ustawa z dnia 22 maja 2003 r. o ubezpieczeniach obowiązkowych, Ubezpieczeniowym Funduszu Gwarancyjnym \n i Polskim Biurze Ubezpieczycieli Komunikacyjnych.`,
           fontSize: 10,
           italics: true,
           margin: [0, 0, 0, 10],
@@ -294,7 +294,7 @@ export function App() {
                 width: "*",
                 text: "data",
                 alignment: "left",
-                margin: [0, 0, 0, 40],
+                margin: [0, 0, 0, 20],
                 fontSize: 10,
               },
             ],
@@ -308,30 +308,34 @@ export function App() {
                 width: "*",
                 text: "podpis, pieczęć Agenta:",
                 alignment: "right",
-                margin: [0, 0, 0, 40],
+                margin: [0, 0, 0, 20],
                 fontSize: 10,
               },
             ],
           ],
         },
         {
-          text: `Informujemy, że twoja umowa zostanie zakończona z dniem podanym w treści oświadczenia a jeśli ta data nie zostanie wpisana, z datą przyjęcia dokumentu`,
+          text: `Informujemy, że Twoja umowa zostanie zakończona z dniem podanym w treści oświadczenia, a jeśli ta data nie zostanie wpisana, z datą przyjęcia dokumentu.`,
           fontSize: 10,
-          margin: [0, 0, 0, 20],
+          margin: [0, 0, 0, 0],
         },
       ],
-      watermark: {
-        text: "studiopolis", // Tekst watermarku
-        color: "#34475d", // Kolor tekstu
-        opacity: 0.1, // Przezroczystość (0 do 1)
-        bold: true, // Czy tekst ma być pogrubiony
-        italics: false, // Czy tekst ma być kursywą
-        angle: 45, // Kąt nachylenia tekstu
-      },
+      background: [
+        {
+            text: 'Studio Polis',
+            fontSize: 64,
+            color: 'gray', 
+            opacity: 0.1,  
+            bold: true,
+            alignment: 'center', 
+            margin: [0, 550]  
+        }
+    ]
+
     };
     pdfMake
       .createPdf(docDefinition)
-      .download(`Formularz APK-${nameData.name} ${nameData.surname}.pdf`);
+      .download(`Wypowiedzene OC-${nameData.name} ${nameData.surname}.pdf`);
     document.querySelector(".modal").style.display = "none";
   }
 
