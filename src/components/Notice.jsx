@@ -54,7 +54,7 @@ const Notice = ({
                 name="companyFrom"
                 value={noticeData.companyFrom}
                 onInput={handleNoticeDataChange}
-                placeholder="AXA"
+                placeholder="AXA, Warta, Unio, Link4"
               />
             </span>{" "}
             ,ponieważ zawarłem na okres od dnia{" "}
@@ -85,7 +85,7 @@ const Notice = ({
                 name="companyTo"
                 value={noticeData.companyTo}
                 onInput={handleNoticeDataChange}
-                placeholder="AXA"
+                placeholder="AXA, Warta, Unio, Link4"
               />
             </span>.
             W przypadku gdy przysługuje mi zwrot składki, proszę o
@@ -124,7 +124,7 @@ const Notice = ({
                 name="datePermThree"
                 value={noticeData.datePermThree}
                 onInput={handleNoticeDataChange}
-                placeholder="AXA"
+                placeholder="AXA, Warta, Unio, Link4"
               ></input>{" "}
             </span>{" "}
             r.{" "}

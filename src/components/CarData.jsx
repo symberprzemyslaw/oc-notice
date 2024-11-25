@@ -5,16 +5,17 @@ const CarData = ({ handleNameChange, nameData }) => {
         <section>
         <h2>Dane pojazdu</h2>
         <label htmlFor="company">Nazwa zakładu ubezpieczeń:</label>
-        <input type="text" name="company" onChange={handleNameChange} value={nameData.company} />
-
+        <input placeholder="AXA, Warta, Unio, Link4" type="text" name="company" onChange={handleNameChange} value={nameData.company} />
+        
         <label htmlFor="brand">Marka pojazdu:</label>
-        <input type="text" name="brand" onChange={handleNameChange}         value={nameData.brand}/>
+        <input placeholder="VW, AUDI, BMW, Seat" type="text" name="brand" onChange={handleNameChange}         value={nameData.brand}/>
 
 
         <label htmlFor="registrationNumber">Numer rejestracyjny:</label>
       <input
         type="text"
         name="registrationNumber"
+        placeholder="WY 12345"
         onChange={handleNameChange}
         value={nameData.registrationNumber}
       />
@@ -22,6 +23,7 @@ const CarData = ({ handleNameChange, nameData }) => {
         <input
           type="text"
           name="insuranceNumber"
+          placeholder="AXA 123456789"
           onChange={handleNameChange}
           value={nameData.insuranceNumber}
         />
@@ -33,7 +35,7 @@ const CarData = ({ handleNameChange, nameData }) => {
         />
 
         <label htmlFor="town">Miejscowość sporządzenia dokumentu:</label>
-        <input type="text" name="town" onChange={handleNameChange} value={nameData.town} />
+        <input type="text" placeholder="Kraków, Warszawa, Gdańsk" name="town" onChange={handleNameChange} value={nameData.town} />
       </section>
     )
 };

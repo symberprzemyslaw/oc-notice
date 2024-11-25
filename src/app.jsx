@@ -10,6 +10,10 @@ import meter2 from "/meter-2.svg";
 import meter3 from "/meter-3.svg";
 import meter4 from "/meter-4.svg";
 
+import users from "./users.json";
+
+
+
 const meters = [meter1, meter2, meter3, meter4];
 
 import * as pdfFonts from "./vfs_fontes";
@@ -79,6 +83,12 @@ export function App() {
       [name]: value,
     }));
   };
+
+// Stan dla aktywnego ID
+const [activeId, setActiveId] = useState(1);
+
+// Znajdź dane dla aktywnego ID
+const activePerson = users.find(person => person.id === activeId);
 
   function generatePDF(event) {
     document.querySelector(".modal").style.display = "flex";
@@ -221,22 +231,22 @@ export function App() {
           text: [
             { text: noticeChoice === 1 ? " ☑ " : " ☐ ", font: "OpenSansEmoji" },
             `Oświadczam,że z dniem ${
-              noticeData.noticeDate.split("-").reverse().join(".") + "r." ||
+              noticeData.noticeDate.split("-").reverse().join(".")  ||
               ".".repeat(20)
-            } wypowiadam umowę ubezpieczenia w firmie ${
+            } r. wypowiadam umowę ubezpieczenia w firmie ${
               noticeData.companyFrom || ".".repeat(20)
             }, ponieważ zawarłem na okres od dnia ${
-              noticeData.companyPeriodStart.split("-").reverse().join(".") + "r."  ||
+              noticeData.companyPeriodStart.split("-").reverse().join(".") ||
               ".".repeat(20)
-            } do dnia ${
-              noticeData.companyPeriodEnd.split("-").reverse().join(".") + "r."  ||
+            } r. do dnia ${
+              noticeData.companyPeriodEnd.split("-").reverse().join(".")   ||
               ".".repeat(20)
-            } ubezpieczenie na mój pojazd w firmie ${
+            } r. ubezpieczenie na mój pojazd w firmie ${
               noticeData.companyTo || ".".repeat(20)
-            }. W przypadku, gdy przysługuje mi zwrot składki, proszę o przekzanie jej na następujacy rachunek bankowy: ${
-              noticeData.bankAccount + "."|| ".".repeat(20)
-            }`,
-            { text: ` (Jeśli mam podwójne ubezpieczenie OC - podstawa prawna: art. 28a ustawy *. Dotyczy tylko umowy wznowionej \n z ustawy.`, italics: true },
+            }. W przypadku, gdy przysługuje mi zwrot składki, proszę o przekazanie jej na następujacy rachunek bankowy: \n ${
+              noticeData.bankAccount || ".".repeat(30)
+            }.`,
+            { text: ` \n(Jeśli mam podwójne ubezpieczenie OC - podstawa prawna: art. 28a ustawy *. Dotyczy tylko umowy wznowionej z ustawy.`, italics: true },
           ],
           margin: [0, 0, 0, 10],
         },
@@ -245,9 +255,9 @@ export function App() {
             { text: noticeChoice === 2 ? " ☑ " : " ☐ ", font: "OpenSansEmoji" },
             {
               text: `Oświadczam, że wypowiadam umowę ubezpieczenia z dniem ${
-                noticeData.datePermThree.split("-").reverse().join(".") + "r." ||
+                noticeData.datePermThree.split("-").reverse().join(".")  ||
                 ".".repeat(20)
-              } `,
+              } r.`,
             },
             {
               text: `(Jeśli kupiłem samochód z ubezpieczeniem - podstawa prawna: art. 31 ustawy *. Umowę wypowiedzieć może jedynie nabywca pojazdu)`,

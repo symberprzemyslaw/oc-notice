@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "fullname": "John Smith"
+  },
+  {
+    "id": 2,
+    "fullname": "Anna Johnson"
+  },
+  {
+    "id": 3,
+    "fullname": "Robert Brown"
+  },
+  {
+    "id": 4,
+    "fullname": "Emily Davis"
+  },
+  {
+    "id": 5,
+    "fullname": "Michael Wilson"
+  }
+]
